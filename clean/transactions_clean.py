@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import pandas as pd
+import pandas as pdgit
 
 DATA_DIR = Path("DAN-P6-donnees/DAN-P6-donnees")
 OUT_DIR = Path("data_clean")
