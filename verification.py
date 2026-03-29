@@ -25,13 +25,13 @@ ca_total = df["price"].sum()
 nb_tx = len(df)
 nb_clients = df["client_id"].nunique()
 ca_mensuel = df.groupby(df["date"].dt.to_period("M"))["price"].sum().mean()
-panier_moyen = df["price"].mean()
+panier_moyen = df.groupby("session_id")["price"].sum().mean()
 
 print(f"CA total          : {ca_total:,.0f} € → présentation : 11,8 M€  {'✓' if 11_700_000 < ca_total < 11_900_000 else '✗'}")
 print(f"Nb transactions   : {nb_tx:,}       → présentation : 678 284  {'✓' if nb_tx == 678_284 else '✗'}")
-print(f"Clients actifs    : {nb_clients:,}       → présentation : 8 598    {'✓' if nb_clients == 8_598 else '✗'}")
+print(f"Clients actifs    : {nb_clients:,}       → présentation : 8 600    {'✓' if nb_clients == 8_600 else '✗'}")
 print(f"CA moyen/mois     : {ca_mensuel:,.0f} €   → présentation : 493 k€   {'✓' if 490_000 < ca_mensuel < 496_000 else '✗'}")
-print(f"Panier moyen      : {panier_moyen:.2f} €       → présentation : 22 €     {'✓' if 21 < panier_moyen < 23 else '✗'}")
+print(f"Panier moyen      : {panier_moyen:.2f} €      → présentation : 34,58 €  {'✓' if 34 < panier_moyen < 35 else '✗'}")
 
 # ── Slide 3 — CA mensuel ──────────────────────────────────
 print(f"\n{SEP}")
