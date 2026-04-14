@@ -16,7 +16,6 @@ format:
       data-background-color: "#1B4332"
   pptx:
     fig-align: center
-    reference-doc: reference_lapage.pptx
 ---
 
 ## Sommaire
@@ -31,19 +30,19 @@ Périmètre, sources de données et questions structurantes
 ::: {.column width="25%"}
 ::: {.sommaire-card}
 ### 02 — Activité
-CA, produits, clients, transactions, références
+CA, produits, transactions, BtoB et concentration du CA
 :::
 :::
 ::: {.column width="25%"}
 ::: {.sommaire-card}
-### 03 — Clients
-Concentration, fidélisation, RFM, rétention
+### 03 — Corrélations
+Genre, âge et comportements d'achat par catégorie
 :::
 :::
 ::: {.column width="25%"}
 ::: {.sommaire-card}
-### 04 — Corrélations & Décisions
-Comportements d'achat, synthèse, recommandations
+### 04 — Décisions
+Synthèse et recommandations
 :::
 :::
 ::::
@@ -67,6 +66,7 @@ Comportements d'achat, synthèse, recommandations
 - **Sources** — Clients, produits, transactions
 - **Catalogue** — 3 catégories de livres
 - **Clientèle** — BtoC & BtoB
+- **Base** — 679 111 transactions, 8 596 clients
 :::
 ::::
 
@@ -79,41 +79,30 @@ Comportements d'achat, synthèse, recommandations
 ::: {.column width="50%"}
 ### Chiffre d'affaires mensuel
 
-- Tendance **haussière** sur 2 ans
-- Saisonnalité **marquée** et reproductible
-- Panier moyen **stable** — croissance portée par le volume
+- CA total sur 2 ans : **11,85 M€**
+- Moyenne mensuelle : **494 k€**
+- Tendance **haussière** sur toute la période
+- Mois record : **Février 2022**
+- Panier moyen **stable** à 17,35 € — la croissance est portée par le volume, pas les prix
 :::
 ::::
 
-## 1 catégorie concentre la majorité du CA — une dépendance structurelle à réduire
+## Catégorie 1 en tête — deux catégories quasi à égalité, la troisième décroche
 
 :::: {.columns}
 ::: {.column width="50%"}
-![](figures/07_ca_categorie_synthese.png){width=100%}
+![](figures/07_repartition_categorie_bar.png){width=100%}
 :::
 ::: {.column width="50%"}
 ### Répartition par catégorie
 
-- Catégorie 0 — **majorité structurelle** du CA
-- Catégories 1 et 2 — secondaires, peu différenciées
-- Dépendance forte à une seule catégorie
+- Catégorie 1 — **39,3 %** du CA (leader)
+- Catégorie 0 — **37,3 %** du CA (quasi à égalité)
+- Catégorie 2 — **23,5 %** du CA (décrochage)
+- Risque modéré de dépendance — deux catégories dominent ensemble à **76,6 %**
 :::
 ::::
 
-## Récurrents majoritaires — la base clients est stable, la fidélisation fonctionne
-
-:::: {.columns}
-::: {.column width="50%"}
-![](figures/03_clients_nouveaux_recurrents.png){width=100%}
-:::
-::: {.column width="50%"}
-### Clients actifs mensuels
-
-- Base active **stable** sur toute la période
-- Majorité de clients **récurrents**
-- Fidélisation fonctionnelle
-:::
-::::
 
 ## Transactions ∝ CA sur 24 mois — aucun effet prix dissocié détectable
 
@@ -124,6 +113,8 @@ Comportements d'achat, synthèse, recommandations
 ::: {.column width="50%"}
 ### Volume de transactions
 
+- Total : **679 111 transactions** sur 2 ans
+- Moyenne : **28 296 / mois**
 - Volume corrélé au CA — **pas d'effet prix dissocié**
 - Saisonnalité cohérente avec le CA
 :::
@@ -140,6 +131,7 @@ Comportements d'achat, synthèse, recommandations
 
 - Nombre de références actives **stable**
 - Fraction **constante** du catalogue écoulée chaque mois
+- Pas d'effet de renouvellement visible sur le CA
 :::
 ::::
 
@@ -154,24 +146,12 @@ Comportements d'achat, synthèse, recommandations
 
 - Écart **significatif** entre best-sellers et queue de catalogue
 - Les 10 premiers produits concentrent l'essentiel du CA
+- Les produits en bas du classement génèrent peu de valeur et mobilisent des ressources
 :::
 ::::
 
-## Pareto confirmé : 20% des références → 80% du CA
 
-:::: {.columns}
-::: {.column width="50%"}
-![](figures/21_pareto_produits.png){width=100%}
-:::
-::: {.column width="50%"}
-### Pareto 80/20
-
-- **20 %** des références → **80 %** du CA
-- Assortiment optimisable en concentrant sur les références motrices
-:::
-::::
-
-## BtoB : quelques clients, l'essentiel du CA — risque de concentration critique
+## BtoB : 4 clients, 7,4% du CA total — concentration critique à sécuriser
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -180,110 +160,47 @@ Comportements d'achat, synthèse, recommandations
 ::: {.column width="50%"}
 ### Segment BtoB
 
-- Segment **restreint**, part **disproportionnée** du CA
-- Risque de concentration élevé — à sécuriser en priorité
+- Seuil BtoB identifié à **11 743 €** de CA cumulé
+- Seulement **4 clients** franchissent ce seuil
+- Ces 4 clients génèrent **881 k€**, soit **7,4 % du CA total**
+- Risque de concentration **critique** — perte d'un client BtoB = impact direct et immédiat sur le CA
 :::
 ::::
 
-## Gini élevé — le CA est très concentré sur un petit nombre de clients
+## Gini 0,45 — le CA est modérément concentré sur 20% des clients
 
 :::: {.columns}
 ::: {.column width="50%"}
 ![](figures/09_lorenz.png){width=100%}
 :::
 ::: {.column width="50%"}
-### Inégalité de répartition
+### Concentration du CA (Lorenz)
 
-- Coefficient de Gini **élevé**
-- CA très concentré sur un **petit nombre** de clients
+- Coefficient de Gini : **0,446**
+- Les **20 %** de clients les plus dépensiers génèrent **48,4 %** du CA
+- Concentration **modérée** — pas d'hyper-dépendance BtoC hors segment BtoB
+- Base clients relativement saine
 :::
 ::::
 
-## Top 20 : 4 clients se démarquent nettement — enjeu stratégique prioritaire
+
+## Chi² significatif — le genre influence légèrement la catégorie achetée
 
 :::: {.columns}
 ::: {.column width="50%"}
-![](figures/10_top_clients.png){width=100%}
-:::
-::: {.column width="50%"}
-### Top 20 clients
-
-- **Décrochage net** entre les 4 premiers et le reste
-- Ces 4 clients = enjeu stratégique à part entière
-:::
-::::
-
-## Clients one-shot : 1 achat, jamais revenus — levier d'activation direct
-
-:::: {.columns}
-::: {.column width="50%"}
-![](figures/22_oneshot_vs_recurrents.png){width=100%}
-:::
-::: {.column width="50%"}
-### Taux de fidélisation
-
-- Part **significative** de clients achetant une seule fois
-- Segment one-shot = **levier d'activation direct**
-:::
-::::
-
-## Fréquence × valeur — le CA croît linéairement avec la récurrence
-
-:::: {.columns}
-::: {.column width="50%"}
-![](figures/22b_recurrence_approfondie.png){width=100%}
-:::
-::: {.column width="50%"}
-### Valeur de la récurrence
-
-- CA total **croît linéairement** avec la fréquence
-- Fidélisation directement et **linéairement** rentable
-:::
-::::
-
-## RFM : 4 profils distincts — des actions commerciales différenciées par segment
-
-:::: {.columns}
-::: {.column width="50%"}
-![](figures/23_rfm_segments.png){width=100%}
-:::
-::: {.column width="50%"}
-### RFM (Recency · Frequency · Monetary)
-
-- Clients à fort potentiel, à risque, inactifs — **identifiés**
-- Chaque segment appelle une **action commerciale spécifique**
-:::
-::::
-
-## Rétention : chute dès le 2e mois — J+30 est le moment critique à adresser
-
-:::: {.columns}
-::: {.column width="50%"}
-![](figures/24_cohortes_retention.png){width=100%}
-:::
-::: {.column width="50%"}
-### Analyse de cohortes
-
-- Rétention **chute fortement** dès le 2e mois
-- 1er mois post-acquisition = **moment critique** à adresser
-:::
-::::
-
-## Chi² non significatif — le genre ne détermine pas la catégorie achetée
-
-:::: {.columns}
-::: {.column width="50%"}
-![](figures/14_genre_categ.png){width=100%}
+![](figures/10_genre_categorie.png){width=100%}
 :::
 ::: {.column width="50%"}
 ### Test Chi² d'indépendance
 
-- Le genre **n'influence pas** la catégorie achetée
-- Segmentation par genre : **non pertinente** pour le ciblage
+- Chi² = 20,2, **p < 0,001** — lien statistiquement significatif
+- **V de Cramér faible** — l'effet est réel mais de petite taille
+- Le genre influence marginalement les préférences de catégorie
+- Segmentation par genre : **possible mais à faible ROI**
 :::
 ::::
 
-## Chi² non significatif — l'âge ne détermine pas la catégorie achetée
+## Chi² fort — la tranche d'âge prédit la catégorie achetée
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -292,12 +209,14 @@ Comportements d'achat, synthèse, recommandations
 ::: {.column width="50%"}
 ### Test Chi² d'indépendance
 
-- La tranche d'âge **n'influence pas** la catégorie achetée
-- Segmentation par âge sur les catégories : **invalidée**
+- Chi² très élevé, **p < 0,001**, **V de Cramér fort**
+- La tranche d'âge est un **prédicteur solide** de la catégorie achetée
+- Levier direct pour le **ciblage éditorial** par groupe d'âge
+- Recommandation : adapter les mises en avant catalogue selon l'âge
 :::
 ::::
 
-## r ≈ 0 — l'âge ne prédit pas le CA total
+## r = −0,19 — les clients plus âgés dépensent légèrement moins
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -306,8 +225,10 @@ Comportements d'achat, synthèse, recommandations
 ::: {.column width="50%"}
 ### Corrélation de Pearson
 
-- Corrélation **nulle** entre âge et CA total
-- L'âge **ne prédit pas** la valeur client
+- r = **−0,188**, p < 0,001 — corrélation négative **faible mais réelle**
+- En moyenne : **−10,63 € de CA par année d'âge supplémentaire**
+- L'effet existe mais il est de faible amplitude
+- L'âge **ne suffit pas** à prédire la valeur client
 :::
 ::::
 
@@ -320,8 +241,10 @@ Comportements d'achat, synthèse, recommandations
 ::: {.column width="50%"}
 ### Corrélation de Pearson
 
-- Aucune relation entre âge et fréquence d'achat
-- **Profil démographique** : non prédictif du comportement
+- r = **0,030**, p = 0,005 — techniquement significatif
+- Mais effet **négligeable en pratique** (r quasi nul)
+- L'âge **ne détermine pas** la fréquence d'achat
+- La fréquence est davantage liée à la **séniorité** (ρ = 0,546)
 :::
 ::::
 
@@ -335,7 +258,8 @@ Comportements d'achat, synthèse, recommandations
 ### Corrélation de Pearson
 
 - Aucune relation entre âge et panier moyen
-- La **récurrence** prime sur le profil démographique
+- Le montant par transaction est **indépendant de l'âge**
+- La **récurrence** prime sur le profil démographique pour expliquer la valeur client
 :::
 ::::
 
@@ -345,61 +269,57 @@ Comportements d'achat, synthèse, recommandations
 ::: {.column width="50%"}
 **Activité**
 
-- ✅ CA en croissance, saisonnalité identifiable
-- ⚠️ Dépendance structurelle à la catégorie 0
-- ⚠️ 20 % des produits font 80 % du CA
+- ✅ CA en croissance sur 2 ans — 11,85 M€ au total
+- ⚠️ Cat. 1 et Cat. 0 dominent à 76,6 % — Cat. 2 décroche
+- ⚠️ Écart massif entre top produits et queue de catalogue
 
 **Clients**
 
-- ✅ Base récurrente solide
-- ⚠️ CA très concentré — risque BtoB élevé
-- ⚠️ Rétention faible dès le 2e mois
+- ⚠️ 4 clients BtoB = 7,4 % du CA — risque de concentration critique
+- ℹ️ Top 20 % des clients → 48,4 % du CA (Gini 0,446)
 :::
 ::: {.column width="50%"}
 **Corrélations**
 
-- ℹ️ L'âge ne prédit ni le CA, ni la fréquence, ni le panier
-- ℹ️ Genre et âge ont un effet limité sur les catégories
+- ✅ Tranche d'âge → prédicteur fort de la catégorie (V fort)
+- ℹ️ Genre → effet significatif mais faible sur les catégories
+- ℹ️ Âge → légère corrélation négative avec le CA (r = −0,19)
+- ℹ️ Âge → aucun effet sur la fréquence ou le panier
 
 **Signal fort**
 
-- 🎯 La valeur client est déterminée par la **récurrence**, pas par le profil démographique
+- 🎯 La **tranche d'âge** — pas le genre — est le seul levier démographique actionnable
+- 🎯 La **concentration BtoB** est le risque court terme n°1
 :::
 ::::
 
-## Recommandations — 5 actions prioritaires
+## Recommandations — 4 actions prioritaires
 
 :::: {.columns}
 ::: {.column width="50%"}
 ::: {.kpi-box}
 🔴 **1 — Sécuriser le BtoB**
-Suivi dédié, contrats cadres
-*Lorenz + top clients*
+Suivi dédié, contrats cadres pour les 4 clients BtoB
+*7,4 % du CA sur 4 comptes*
 :::
 
 ::: {.kpi-box}
-🔴 **2 — Activer les one-shot**
-Relance ciblée J+30
-*Cohortes + RFM*
-:::
-
-::: {.kpi-box}
-🟠 **3 — Concentrer l'assortiment**
-Focus sur les 20 % de références motrices
-*Pareto + top produits*
+🔴 **2 — Cibler par tranche d'âge, pas par genre**
+Adapter les mises en avant catalogue selon l'âge — prédicteur validé
+*Chi² tranche d'âge × catégorie (V fort)*
 :::
 :::
 ::: {.column width="50%"}
 ::: {.kpi-box}
-🟠 **4 — Diversifier hors catégorie 0**
-Réduire l'exposition à une seule catégorie
-*CA par catégorie*
+🟠 **3 — Réduire la queue de catalogue**
+Déréférencer les produits en bas du classement, concentrer les efforts sur les références motrices
+*Top 10 / Flop 10*
 :::
 
 ::: {.kpi-box}
-🟡 **5 — Cibler les pics d'activité**
-Concentrer les communications sur la saisonnalité
-*Temporalité*
+🟡 **4 — Développer la catégorie 2**
+Analyser le décrochage (23,5 % du CA), levier de rééquilibrage du mix
+*Répartition CA par catégorie*
 :::
 :::
 ::::
