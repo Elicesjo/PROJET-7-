@@ -1,4 +1,4 @@
-"""Génère presentation_lapage_v3.pptx — charte graphique personnalisée."""
+"""Génère presentation_lapage_v4.pptx — charte graphique personnalisée."""
 
 from pptx import Presentation
 from pptx.util import Cm, Pt
@@ -250,11 +250,10 @@ s2   = prs.slides.add_slide(BLANK)
 cy2  = header(s2, "Sommaire", 2)
 
 sections = [
-    ("01", "Activité",     "CA, transactions\ncatalogue, saisonnalité"),
-    ("02", "Clients",      "BtoB, concentration\nfidélisation, cohortes"),
-    ("03", "RFM",          "Profils clients\nvaleur, récence"),
-    ("04", "Corrélations", "Âge, genre\ncatégorie d'achat"),
-    ("05", "Synthèse",     "Enseignements clés\nrecommandations"),
+    ("01", "Activité",     "CA, transactions\ncatalogue, produits"),
+    ("02", "Clients",      "BtoB, concentration\nnouveaux clients"),
+    ("03", "Corrélations", "Âge, genre\ncatégorie d'achat"),
+    ("04", "Synthèse",     "Enseignements clés\nrecommandations"),
 ]
 n_cols    = len(sections)
 cards_w   = SLIDE_W - 2 * CARD_MARGIN
@@ -289,54 +288,71 @@ for i, (num, titre, desc) in enumerate(sections):
     ft(r3, CARD_FONT, color=MID)
 
 
-# ── Slides 3-7 — Activité ────────────────────────────────────────────────────
+# ── Slides 3-11 — Activité ───────────────────────────────────────────────────
 content_slide(prs,
-    "CA en hausse sur 24 mois — la croissance vient du volume, pas des prix",
-    "01_ca_temporel_synthese.png",
+    "CA stable sur 24 mois — pas de décrochage structurel, une base commerciale solide",
+    "01_ca_mensuel.png",
     [
-        {"kpi": "11,85 M€", "kpi_color": "green", "sub": "CA total sur 2 ans",
+        {"kpi": "11,85 M€", "kpi_color": "green", "sub": "CA total · Mar 2021 – Fév 2023",
          "points": ["Mois record : Fév. 2022", "Mois creux : Oct. 2021"]},
-        {"kpi": "17,35 €", "kpi_color": "neutral", "sub": "panier moyen — stable sur 2 ans",
-         "points": ["→ La hausse du CA vient du nombre d'achats, pas des prix"]},
-        {"points": ["Saisonnalité reproductible d'une année sur l'autre",
-                    "→ Les pics sont prévisibles — planifier les campagnes en amont"]},
+        {"kpi": "493 k€", "kpi_color": "neutral", "sub": "CA moyen / mois",
+         "points": ["Pas de tendance baissière sur 2 ans",
+                    "→ L'activité est structurellement saine"]},
     ], 3)
 
 content_slide(prs,
-    "Cat.1 et Cat.0 dominent à 77% — Cat.2 décroche et reste sous-exploitée",
-    "07_repartition_categorie_bar.png",
+    "Cat. 1 et Cat. 0 dominent à 76% — Cat. 2 reste minoritaire malgré ses prix plus élevés",
+    "07_repartition_categorie_pie.png",
     [
         {"kpi": "39 %", "kpi_color": "green", "sub": "Catégorie 1 — leader",
          "points": ["Catégorie 0 : 37 %", "Les deux ensemble : 76 % du CA"]},
-        {"kpi": "23 %", "kpi_color": "red", "sub": "Catégorie 2 — décroche",
+        {"kpi": "23 %", "kpi_color": "red", "sub": "Catégorie 2 — minoritaire",
          "points": ["→ Offre, prix ou visibilité à investiguer",
                     "→ Potentiel de croissance non exploité"]},
     ], 4)
 
 content_slide(prs,
-    "Saisonnalité prouvée — des pics réels et prévisibles à intégrer au calendrier commercial",
-    "29_saisonnalite_mensuelle.png",
+    "Les 3 catégories évoluent en parallèle — pas de substitution, un marché cohérent",
+    "02_ca_par_categorie.png",
     [
-        {"kpi": "Lundi", "kpi_color": "green", "sub": "meilleur jour de CA",
-         "points": ["Samedi = jour le plus faible",
-                    "→ Concentrer les communications en début de semaine"]},
-        {"points": ["Saisonnalité confirmée statistiquement (p < 0,001)",
-                    "Chaque catégorie a ses propres pics — segmenter les campagnes par catégorie"]},
+        {"points": ["Cat. 1 et Cat. 0 suivent la même saisonnalité",
+                    "Aucune catégorie ne cannibalise les autres"]},
+        {"points": ["→ Les promotions sur une catégorie n'affectent pas les autres",
+                    "→ La croissance est globale, pas de rééquilibrage interne"]},
     ], 5)
 
 content_slide(prs,
-    "Pareto 80/20 confirmé — 20% des références font 80% du CA, le catalogue peut être réduit",
-    "21_pareto_produits.png",
+    "Cat. 2 a les prix unitaires les plus élevés — un positionnement premium sous-exploité",
+    "07b_prix_unitaire_categ.png",
     [
-        {"kpi": "80 %", "kpi_color": "green", "sub": "du CA sur 20 % des références",
-         "points": ["La queue du catalogue génère peu de valeur",
-                    "→ Déréférencer les produits en bas de classement"]},
-        {"points": ["Concentrer les mises en avant sur les références motrices",
-                    "→ Simplifier le catalogue = moins de coûts, plus de focus"]},
+        {"points": ["Cat. 2 : prix unitaire moyen nettement supérieur aux Cat. 0 et 1",
+                    "→ Explique pourquoi Cat. 2 fait 23 % du CA avec peu de volume"]},
+        {"points": ["→ Levier : cibler les tranches d'âge qui achètent Cat. 2 (< 25 ans)",
+                    "→ Une réduction sur Cat. 2 a plus d'impact en € qu'une réduction sur Cat. 0"]},
     ], 6)
 
 content_slide(prs,
-    "Transactions et CA évoluent ensemble — augmenter le CA passe obligatoirement par plus d'achats",
+    "Base clients stable sur 24 mois — l'acquisition compense le churn naturel",
+    "03_clients_par_mois.png",
+    [
+        {"kpi": "5 714", "kpi_color": "neutral", "sub": "clients actifs en moyenne / mois",
+         "points": ["Pas d'érosion visible sur la période", "La base est saine et constante"]},
+        {"points": ["→ L'enjeu n'est pas l'acquisition brute mais la fidélisation",
+                    "→ Travailler la valeur par client plutôt que le volume"]},
+    ], 7)
+
+content_slide(prs,
+    "Cat. 0 et Cat. 1 mobilisent le plus de clients — Cat. 2 reste confidentielle mais premium",
+    "07c_clients_categ_mois.png",
+    [
+        {"points": ["Répartition clients par catégorie stable sur toute la période",
+                    "Cat. 2 : peu de clients mais panier unitaire élevé"]},
+        {"points": ["→ Cat. 2 est un produit de niche — cibler les profils à fort potentiel",
+                    "→ Ne pas chercher à massifier Cat. 2 : son modèle repose sur la marge"]},
+    ], 8)
+
+content_slide(prs,
+    "Transactions et CA évoluent ensemble — augmenter le CA passe par plus d'achats",
     "04_transactions_par_mois.png",
     [
         {"kpi": "679 k", "kpi_color": "green", "sub": "transactions sur 2 ans",
@@ -344,10 +360,29 @@ content_slide(prs,
         {"points": ["Volume et CA parfaitement synchrones",
                     "Aucun effet prix détectable",
                     "→ Pour croître : augmenter la fréquence d'achat"]},
-    ], 7)
+    ], 9)
+
+content_slide(prs,
+    "Cat. 0 domine en volume — Cat. 2 génère autant de CA avec bien moins d'unités vendues",
+    "05c_qte_vendus_categ.png",
+    [
+        {"points": ["Cat. 0 = volume fort, prix bas",
+                    "Cat. 2 = volume faible, prix élevé"]},
+        {"points": ["→ Le CA de Cat. 2 repose sur la marge, pas le volume",
+                    "→ Une stratégie de montée en gamme (Cat. 2) est complémentaire à Cat. 0"]},
+    ], 10)
+
+content_slide(prs,
+    "Top 10 = CA et volume alignés — les flops vendent peu et génèrent un CA négligeable",
+    "06b_top_flop_ca_qte.png",
+    [
+        {"points": ["Top produit : ~95 k€ de CA", "Le top 10 est dominé par Cat. 2"]},
+        {"kpi": "< 3 €", "kpi_color": "red", "sub": "CA généré par les flops",
+         "points": ["→ Déréférencer les flops : simplifier l'offre sans perte de CA"]},
+    ], 11)
 
 
-# ── Slides 8-11 — Clients ────────────────────────────────────────────────────
+# ── Slides 12-14 — Clients ───────────────────────────────────────────────────
 content_slide(prs,
     "4 clients BtoB = 7,4% du CA total — perdre un seul impacte directement les résultats",
     "08_ca_btob.png",
@@ -357,7 +392,7 @@ content_slide(prs,
                     "→ Concentration critique sur très peu de comptes"]},
         {"points": ["→ Priorité absolue : suivi dédié + contrats cadres",
                     "→ Sécuriser ces comptes avant toute autre action commerciale"]},
-    ], 8)
+    ], 12)
 
 content_slide(prs,
     "Gini 0,45 — concentration modérée, la base BtoC est saine hors les 4 comptes BtoB",
@@ -368,58 +403,21 @@ content_slide(prs,
         {"points": ["La base BtoC est relativement équilibrée",
                     "Le risque de concentration vient des 4 BtoB, pas du BtoC",
                     "→ Sécuriser le BtoB sans négliger la valeur diffuse du BtoC"]},
-    ], 9)
-
-content_slide(prs,
-    "99,7% des clients rachètent — mais la rétention chute dès le 2e mois, J+30 est critique",
-    "17_nouveaux_recurrents.png",
-    [
-        {"kpi": "99,7 %", "kpi_color": "green", "sub": "des clients ont racheté",
-         "points": ["8 566 clients sur 8 596", "Base active et stable sur 2 ans"]},
-        {"kpi": "J+30", "kpi_color": "red", "sub": "fenêtre critique de rétention",
-         "points": ["Chute forte dès le 2e mois pour toutes les cohortes",
-                    "→ Déclencher un 2e achat avant J+30 = levier majeur"]},
-    ], 10)
-
-content_slide(prs,
-    "Rétention s'effondre au 2e mois — un 2e achat avant J+30 transforme un one-shot en fidèle",
-    "18_retention_cohorte.png",
-    [
-        {"points": ["Chute visible sur toutes les cohortes dès le mois 2",
-                    "Les clients passant le cap du 2e achat restent actifs durablement"]},
-        {"points": ["→ Email J+7 : recommandation personnalisée",
-                    "→ Offre J+30 : incitation au 2e achat",
-                    "→ Ce seul geste peut multiplier la valeur vie client"]},
-    ], 11)
-
-
-# ── Slides 12-13 — Séniorité + RFM ──────────────────────────────────────────
-content_slide(prs,
-    "Plus un client est ancien, plus il vaut — fidéliser tôt et longtemps est la meilleure stratégie",
-    "28_seniorite_ca.png",
-    [
-        {"kpi": "ρ = 0,55", "kpi_color": "green", "sub": "ancienneté × fréquence d'achat",
-         "points": ["Corrélation forte — plus un client est ancien, plus il achète souvent"]},
-        {"kpi": "ρ = 0,48", "kpi_color": "green", "sub": "ancienneté × CA total",
-         "points": ["La valeur d'un client croît dans le temps",
-                    "→ Investir dans la durée de la relation est directement rentable"]},
-    ], 12)
-
-content_slide(prs,
-    "4 segments RFM distincts — les À risque ressemblent aux Champions, les réactiver vite",
-    "19_rfm.png",
-    [
-        {"kpi": "2 639", "kpi_color": "green", "sub": "Champions — CA moy. 2 189 €",
-         "points": ["Loyaux (1 291) : 963 € · fidèles, valeur intermédiaire"]},
-        {"kpi": "1 245", "kpi_color": "red", "sub": "clients À risque — CA moy. 1 464 €",
-         "points": ["Profil quasi identique aux Champions mais en train de partir",
-                    "→ Cible de réactivation prioritaire — agir avant la bascule définitive"]},
-        {"kpi": "2 985", "kpi_color": "red", "sub": "clients Perdus — 35 % de la base",
-         "points": ["→ Campagne de reconquête ciblée à fort potentiel de CA"]},
     ], 13)
 
+content_slide(prs,
+    "Acquisition régulière — mais comprendre quand et pourquoi les clients reviennent est clé",
+    "nouveaux_clients.png",
+    [
+        {"kpi": "8 596", "kpi_color": "green", "sub": "clients uniques sur 2 ans",
+         "points": ["Acquisition stable et continue sur la période",
+                    "Pas de pic d'acquisition isolé — régularité du recrutement"]},
+        {"points": ["→ La base clients est saine et se renouvelle naturellement",
+                    "→ L'enjeu : transformer chaque nouveau client en client récurrent"]},
+    ], 14)
 
-# ── Slides 14-18 — Corrélations ──────────────────────────────────────────────
+
+# ── Slides 15-19 — Corrélations ──────────────────────────────────────────────
 content_slide(prs,
     "Genre et catégorie : lien trop faible pour segmenter — l'effort ne sera pas rentabilisé",
     "10_genre_categorie.png",
@@ -428,80 +426,79 @@ content_slide(prs,
                     "→ Le genre influence marginalement les préférences d'achat"]},
         {"points": ["→ Segmenter par genre seul : trop peu d'impact sur le CA",
                     "→ À croiser avec l'âge pour affiner le ciblage éditorial"]},
-    ], 14)
+    ], 15)
 
 content_slide(prs,
     "Tranche d'âge et catégorie : lien fort — c'est le seul levier démographique actionnable",
-    "14_age_categorie.png",
+    "14_age_categorie_kruskal.png",
     [
-        {"points": ["Lien statistiquement très fort (V de Cramér élevé)",
+        {"points": ["Lien statistiquement très fort (Kruskal-Wallis, p < 0,001)",
                     "→ L'âge prédit bien la catégorie achetée"]},
         {"points": ["→ Adapter les mises en avant selon la tranche d'âge du client",
-                    "→ Résultat le plus actionnable des 5 corrélations analysées",
+                    "→ Résultat le plus actionnable des corrélations analysées",
                     "→ Ciblage éditorial par âge : pertinent et immédiatement opérationnel"]},
-    ], 15)
+    ], 16)
 
 content_slide(prs,
     "Âge et dépenses totales : légère corrélation négative — l'âge seul n'est pas prédicteur de valeur",
     "11_age_ca_total.png",
     [
         {"kpi": "−11 €", "kpi_color": "red", "sub": "de CA par année d'âge supplémentaire",
-         "points": ["r = −0,188 — lien réel mais de faible amplitude"]},
+         "points": ["Corrélation faible — lien réel mais de faible amplitude"]},
         {"points": ["→ L'âge ne suffit pas à prédire la valeur d'un client",
-                    "→ L'ancienneté est un bien meilleur indicateur (ρ = 0,48)",
                     "→ Ne pas cibler par âge pour optimiser la valeur client"]},
-    ], 16)
+    ], 17)
 
 content_slide(prs,
-    "Âge et fréquence : aucun lien — c'est l'ancienneté qui fait revenir, pas l'âge",
+    "Âge et fréquence : aucun lien — tous les âges achètent aussi souvent",
     "12_age_frequence.png",
     [
         {"points": ["Aucune relation entre l'âge et la fréquence d'achat",
                     "Un client de 25 ans n'achète pas plus souvent qu'un client de 60 ans"]},
-        {"points": ["→ Ce qui fait revenir un client : son ancienneté, pas son âge",
+        {"points": ["→ La fréquence ne dépend pas de l'âge",
                     "→ Stratégie : fidéliser tôt, entretenir la relation dans la durée"]},
-    ], 17)
+    ], 18)
 
 content_slide(prs,
     "Âge et panier moyen : aucun lien — tous les âges dépensent autant par achat",
     "13_age_panier_moyen.png",
     [
         {"points": ["Aucune relation entre l'âge et le montant par transaction",
-                    "Résultat cohérent avec les deux corrélations précédentes"]},
+                    "Résultat cohérent avec la fréquence"]},
         {"points": ["Conclusion sur l'âge :",
                     "→ Utile pour le ciblage éditorial (quelle catégorie proposer)",
                     "→ Pas pertinent pour prédire la valeur ou la fréquence d'achat"]},
-    ], 18)
+    ], 19)
 
 
-# ── Slide 19 — Synthèse ──────────────────────────────────────────────────────
+# ── Slide 20 — Synthèse ──────────────────────────────────────────────────────
 s_syn = prs.slides.add_slide(BLANK)
-cy    = header(s_syn, "Synthèse — Ce que les données nous disent", 19)
+cy    = header(s_syn, "Synthèse — Ce que les données nous disent", 20)
 
 blocs = [
     ("Activité", GREEN, [
-        "CA +11,85 M€ sur 2 ans",
-        "Saisonnalité prévisible et exploitable",
-        "Pareto 80/20 confirmé sur le catalogue",
-        "Cat.2 décroche — levier de diversification",
+        "CA +11,85 M€ stable sur 2 ans",
+        "Cat. 2 : premium sous-exploité",
+        "Volume = moteur de croissance",
+        "Flops catalogue : CA négligeable",
     ]),
     ("Clients", RGBColor(0x1A, 0x53, 0x76), [
-        "99,7 % des clients rachètent",
         "4 clients BtoB = 7,4 % du CA",
-        "Rétention chute dès J+30",
-        "Valeur client croît avec ancienneté",
+        "Concentration modérée (Gini 0,45)",
+        "Acquisition régulière et stable",
+        "Base BtoC saine et équilibrée",
     ]),
     ("Corrélations", RGBColor(0x6C, 0x3A, 0x83), [
         "Âge → fort prédicteur de catégorie",
         "Genre → effet trop faible pour segmenter",
         "Âge → effet faible sur le CA total",
-        "Fréquence portée par l'ancienneté",
+        "Âge → aucun lien avec la fréquence",
     ]),
     ("Signal fort", RGBColor(0x1B, 0x6B, 0x43), [
-        "La valeur = durée de la relation, pas l'âge",
-        "Faire revenir avant J+30 = levier n°1",
         "Cibler par âge pour l'offre éditoriale",
         "Sécuriser les 4 comptes BtoB en urgence",
+        "Ne pas segmenter par genre",
+        "Développer Cat. 2 sur les < 25 ans",
     ]),
 ]
 
@@ -550,21 +547,19 @@ for i, (titre, color, items) in enumerate(blocs):
         ft(r, CARD_FONT)
 
 
-# ── Slide 20 — Recommandations ───────────────────────────────────────────────
+# ── Slide 21 — Recommandations ───────────────────────────────────────────────
 s_reco = prs.slides.add_slide(BLANK)
-cy     = header(s_reco, "5 actions prioritaires pour les 6 prochains mois", 20)
+cy     = header(s_reco, "4 actions prioritaires pour les 6 prochains mois", 21)
 
 recs = [
     (KPI_RED,               "1 — Sécuriser le BtoB",
      "7,4 % du CA sur 4 comptes\n→ Suivi dédié + contrats cadres"),
-    (KPI_RED,               "2 — Déclencher le 2e achat < J+30",
-     "Email J+7 + offre J+30\n→ Transformer chaque one-shot en fidèle"),
-    (RGBColor(0xE6,0x7E,0x22), "3 — Rationaliser le catalogue",
-     "Focus 20 % des références motrices\n→ Pareto 80/20 confirmé"),
+    (KPI_RED,               "2 — Rationaliser le catalogue",
+     "Focus 20 % des références motrices\n→ Déréférencer les flops sans perte de CA"),
+    (RGBColor(0xE6,0x7E,0x22), "3 — Développer Cat. 2 sur les < 25 ans",
+     "Prix premium + tranche d'âge validée\n→ Seul segment où Cat. 2 est surreprésentée"),
     (RGBColor(0xE6,0x7E,0x22), "4 — Cibler par tranche d'âge",
-     "Adapter les mises en avant éditoriales\n→ Seul levier démographique fort"),
-    (RGBColor(0xF3,0x9C,0x12), "5 — Réactiver À risque + Perdus",
-     "4 230 clients · CA moyen À risque : 1 464 €\n→ Campagne RFM ciblée"),
+     "Adapter les mises en avant éditoriales\n→ Seul levier démographique fort (Kruskal p < 0,001)"),
 ]
 
 n_recs   = len(recs)
@@ -606,6 +601,6 @@ for i, (color, titre, desc) in enumerate(recs):
 
 
 # ── Save ─────────────────────────────────────────────────────────────────────
-output = "presentation_lapage_v3.pptx"
+output = "presentation_lapage_v4.pptx"
 prs.save(output)
 print(f"Sauvegardé : {output} — {len(prs.slides)} slides")
